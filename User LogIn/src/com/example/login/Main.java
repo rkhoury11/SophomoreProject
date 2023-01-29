@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.regex.*;
 
 public class Main {
-    public static Map<String, String> userList = new HashMap<String, String>();
-    public static Scanner scanner = new Scanner(System.in);
+    private static Map<String, String> userList = new HashMap<String, String>();
+    private static Scanner scanner;
 
     public static void main(String[] args) {
 
@@ -13,19 +13,6 @@ public class Main {
         System.out.println("What would you like to do?");
 
         showInitialOptions();
-
-
-//        System.out.print("Username: ");
-//
-//        String username = scanner.next();
-//
-//        System.out.print("Password: ");
-//
-//        String password = scanner.next();
-//
-//        userList.add(new User(username, password));
-//
-//        System.out.println(userList.get(0).getUsername());
     }
 
     private static void showInitialOptions() {
@@ -33,7 +20,7 @@ public class Main {
                 "\n\t1. Log In" +
                 "\n\t2. Create Account" +
                 "\n\t3. Quit");
-
+        scanner = new Scanner(System.in);
         int input = scanner.nextInt();
         switch (input) {
             case 1:
@@ -51,10 +38,10 @@ public class Main {
 
         System.out.println("Creating account..." +
                 "\nPlease enter a username: ");
-        String username = scanner.next();
+        scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
         // if user does not type anything, invalidate and ask again
-        if (username.equals("")) {
-            System.out.println("Invalid username! Try again");
+        if (validateUsername(username) == false) {
             createAccount();
 
             // or if username is already taken, invalidate and ask again
@@ -67,9 +54,9 @@ public class Main {
             System.out.println("Password must be between 8 and 16 characters" +
                     "and satisfy 3 out of the 4 following requirements:" +
                     "\n\t1. At least one digit"
-                    + "\n\t2. One lower case letter \n\t3. One upper case letter\n\t4. One symbol.");
+                    +"\n\t2. One lower case letter \n\t3. One upper case letter\n\t4. One symbol.");
             System.out.println("Please enter a password:");
-            String password = scanner.next();
+            String password = scanner.nextLine();
 
             //if user enters nothing, invalidate password and try again
             if (validatePassword(password) == false) {
@@ -87,7 +74,12 @@ public class Main {
     private static void logIn() {
         System.out.println("Logging in..." +
                 "\nUsername:");
-        String username = scanner.next();
+        scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        if (username.contains(" ")){
+            System.out.println("Username must not contain spaces!");
+            logIn();
+        }
 
         // if username is in stored list of usernames, ask for password
         if (userList.containsKey(username)) {
@@ -95,12 +87,12 @@ public class Main {
             String password = scanner.next();
 
             // if password matches database, welcome the user
-            if (userList.containsValue(password)) {
+            if (userList.get(username).equals(password)) {
                 System.out.println("Welcome " + username + "!");
 
                 // else, tell them the password does not exist and provide a pop-up menu
             } else {
-                System.out.println("This username does not exist!" +
+                System.out.println("Your username and/or password is incorrect!!" +
                         "\n\t1. Try again" +
                         "\n\t2. Forgot my password" +
                         "\n\t3. Quit");
@@ -146,7 +138,11 @@ public class Main {
 
     private static boolean validatePassword(String str) {
         int count = 0;
-        str = str.replace(" ", "");
+
+        if (str.contains(" ")) {
+            System.out.println("password must not contain spaces!");
+            return false;
+        }
 
         if (isGoodLength(str) == false) {
             System.out.println("Invalid Password");
@@ -223,5 +219,17 @@ public class Main {
         Matcher m = p.matcher(password);
 
         return m.matches();
+    }
+
+    private static boolean validateUsername(String username){
+        if (username.length() < 6 || username.length() > 20){
+            System.out.println("Username must be between 6 and 20 characters!");
+            return false;
+        } else if (username.contains(" ")) {
+            System.out.println("Username must not contain spaces!");
+            return false;
+        }
+
+        return true;
     }
 }
