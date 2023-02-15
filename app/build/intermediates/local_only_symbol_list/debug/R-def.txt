@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable account_img
+drawable background
+drawable baseline_email_24
+drawable baseline_info_24
+drawable baseline_person_24
+drawable faceblol
+drawable googlelogo
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id email
+id info
+id menu_item_profile
+id password
+id repassword
+id signupbtn
+id signuptitle
+id socialicons
+id txtLoginInfo
+id username
+layout activity_friends
+layout activity_main
+menu profile_menu
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.BeaconTest
+xml backup_rules
+xml data_extraction_rules
