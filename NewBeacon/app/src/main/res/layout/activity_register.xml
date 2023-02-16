@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+<!--TextView: Page Title-->
+    <TextView
+        android:id="@+id/signuptitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center"
+        android:text="Welcome to Beacon"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+
+    <!--TextView: Page Title "create account"-->
+    <TextView
+        android:id="@+id/createaccounttxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_below="@+id/signuptitle"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="30dp"
+        android:text="Create Account"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <!--EditText: Username-->
+    <EditText
+        android:id="@+id/usernametxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createaccounttxt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="20dp"
+        android:hint="Username"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
+
+    <!--EditText: Email-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailtxt"
+        android:layout_below="@+id/usernametxt"
+        android:background="#30ffffff"
+        android:hint="Email"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawablePadding="20dp"
+        android:inputType="textEmailAddress"/>
+
+    <!--EditText: password-->
+    <EditText
+        android:id="@+id/passwordtxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailtxt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawablePadding="20dp"
+        android:hint="Password"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textPassword"/>
+
+
+    <!--EditText: Confirm password-->
+    <EditText
+        android:id="@+id/confirmpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordtxt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawablePadding="20dp"
+        android:hint="Confirm password"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textPassword"/>
+
+    <!--Button: Sign up button-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmpassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="SIGN UP"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginopt"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/signupbtn"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/haveaccounttxt"
+            android:text="Already have an account?"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_below="@id/signupbtn"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signintxt"
+            android:text="Sign in"
+            android:layout_centerHorizontal="true"
+            android:textColor="#07bbf2"
+            android:layout_toRightOf="@id/haveaccounttxt"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@id/signupbtn"/>
+    </LinearLayout>
+
+</RelativeLayout>
